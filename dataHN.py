@@ -22,10 +22,10 @@ country_HN_df=country_df[country_df['Country_Region']=='Honduras']
 
 #merging the Honduran data into a single csv
 frames=[confirmed_HN_df, recovered_HN_df, death_HN_df]
-Honduras=pd.concat(frames)
+honduras_df=pd.concat(frames)
 descriptions=['Confirmed','Recovered','Death']
-Honduras['Country/Region']=descriptions
-Honduras.rename(columns={'Country/Region':'Status'})
+honduras_df.index=descriptions
+honduras_df=honduras_df.drop(['Province/State','Country/Region','Lat','Long'],axis=1)
 
 #Saving data into a local file 
-Honduras.to_csv('/home/alb2m2/Documents/HondurasResumen.csv')
+honduras_df.to_csv('/home/alb2m2/Documents/HondurasResumen.csv')
